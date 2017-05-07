@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Button, Card, CardSection } from './common';
+import { Button, Card, CardSection, Input } from './common';
 
 class LoginForm extends Component {
+  state = {
+    email: '',
+    password: ''
+  }
+
   render(){
     return(
       <Card>
-        <CardSection />
-        <CardSection />
         <CardSection>
-          <Button>
+          <Input
+            placeholder='Khazix@gmail.com'
+            label='Email'
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
+          />
+        </CardSection>
+
+        <CardSection>
+        <Input
+          secureTextEntry={true}
+          placeholder='pas55w0rd!'
+          label='password'
+          value={this.state.password}
+          onChangeText={password => this.setState({ password })}
+        />
+        </CardSection>
+        <CardSection>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Log in
           </Button>
         </CardSection>
@@ -17,4 +37,4 @@ class LoginForm extends Component {
     )
   }
 }
-export { LoginForm } 
+export { LoginForm }
